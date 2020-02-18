@@ -14,7 +14,44 @@ using namespace std;
 #include "Ceiling.hpp"
 #include "Pow.hpp"
 
+
 TEST(CeilingTest, BasicTest1) {
+
+	Op* op1 = new Op(2.5);
+
+  Ceil* test = new Ceil(op1);
+
+	EXPECT_EQ(test->evaluate(), 3);
+}
+
+TEST(CeilingTest, BasicTest2) {
+
+	Op* op1 = new Op(3);
+
+  Ceil* test = new Ceil(op1);
+
+	EXPECT_EQ(test->evaluate(), 3);
+}
+
+TEST(CeilingTest, BasicTest3) {
+
+	Op* op1 = new Op(-5.4);
+
+  Ceil* test = new Ceil(op1);
+
+	EXPECT_EQ(test->evaluate(), -5);
+}
+
+TEST(CeilingTest, BasicTest4) {
+
+	Op* op1 = new Op(0);
+
+  Ceil* test = new Ceil(op1);
+
+	EXPECT_EQ(test->evaluate(), 0);
+}
+
+TEST(CeilingTest, LongTest) {
 
 	Op* op1 = new Op(-5);
 	Op* op2 = new Op(2);
@@ -33,16 +70,6 @@ TEST(CeilingTest, BasicTest1) {
   Ceil* test = new Ceil(sub1);
 
 	EXPECT_EQ(test->evaluate(), 44);
-}
-
-
-TEST(CeilingTest, BasicTest2) {
-
-	Op* op1 = new Op(2.5);
-
-  Ceil* test = new Ceil(op1);
-
-	EXPECT_EQ(test->evaluate(), 3);
 }
 
 #endif

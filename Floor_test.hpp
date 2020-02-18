@@ -14,7 +14,45 @@ using namespace std;
 #include "Floor.hpp"
 #include "Pow.hpp"
 
+
+
 TEST(FloorTest, BasicTest1) {
+
+	Op* op1 = new Op(2.5);
+
+  Floor* test = new Floor(op1);
+
+	EXPECT_EQ(test->evaluate(), 2);
+}
+
+TEST(FloorTest, BasicTest2) {
+
+	Op* op1 = new Op(3);
+
+  Floor* test = new Floor(op1);
+
+	EXPECT_EQ(test->evaluate(), 3);
+}
+
+TEST(FloorTest, BasicTest3) {
+
+	Op* op1 = new Op(-5.4);
+
+  Floor* test = new Floor(op1);
+
+	EXPECT_EQ(test->evaluate(), -6);
+}
+
+TEST(FloorTest, BasicTest4) {
+
+	Op* op1 = new Op(0);
+
+  Floor* test = new Floor(op1);
+
+	EXPECT_EQ(test->evaluate(), 0);
+}
+
+TEST(FloorTest, LongTest) {
 
 	Op* op1 = new Op(-5);
 	Op* op2 = new Op(2);
@@ -33,16 +71,6 @@ TEST(FloorTest, BasicTest1) {
   Floor* test = new Floor(sub1);
 
 	EXPECT_EQ(test->evaluate(), 44);
-}
-
-
-TEST(FloorTest, BasicTest2) {
-
-	Op* op1 = new Op(2.5);
-
-  Floor* test = new Floor(op1);
-
-	EXPECT_EQ(test->evaluate(), 2);
 }
 
 #endif
