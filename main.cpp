@@ -17,45 +17,99 @@ using namespace std;
 #include "op.hpp"
 #include "rand.hpp"
 #include "sort.hpp"
+#include "Truncate.hpp"
+#include "Parenthesies.hpp"
+#include "FLoor.hpp"
+#include "Ceiling.hpp"
+#include "Abs.hpp"
 
 
 int main() {
   Op* op1 = new Op(7);
-	Op* op2 = new Op(4);
-	Op* op3= new Op(3);
-	Op* op4= new Op(2);
-  Op* op5= new Op(7.4);
+	Op* op2 = new Op(4.5);
+	Op* op3 = new Op(3);
+	Op* op4 = new Op(200);
 	Mult* A = new Mult(op1,op2);
 	Add* B = new Add(op3,A);
 	Sub* C = new Sub(B,op4);
-	Div* D = new Div(C,op4);
-	VectorContainer* container = new VectorContainer();
-	container->add_element(A);
-	container->add_element(B);
-	container->add_element(C);
-	container->add_element(D);
-
-  cout << "The expression A located at index 0 evaluates to: " << container->at(0)->evaluate() << endl;
- 	cout << "The expression B located at index 1 evaluates to: " << container->at(1)->evaluate() << endl;
-  cout << "The expression C located at index 2 evaluates to: " << container->at(2)->evaluate() << endl;
-  cout << "The expression D located at index 3 evaluates to: " << container->at(3)->evaluate() << endl;
-
-  cout << "Container Before Sort: " << endl;
- 	container->print();
-
- 	cout << "Container After Sort: " << endl;
- 	container->set_sort_function(new SelectionSort());
- 	container->sort();
- 	container->print();
-
-  cout << "The expression A located at index 0 evaluates to: " << container->at(0)->evaluate() << endl;
- 	cout << "The expression B located at index 1 evaluates to: " << container->at(1)->evaluate() << endl;
-  cout << "The expression C located at index 2 evaluates to: " << container->at(2)->evaluate() << endl;
-  cout << "The expression D located at index 3 evaluates to: " << container->at(3)->evaluate() << endl;
 
 
 
+  cout << "Before Ceiling: " << endl;
+  cout << A->evaluate() << endl;
+  cout << "After Ceiling: " << endl;
+  Ceil* A1 = new Ceil(A);
+  cout << A1->evaluate() << endl;
 
+  cout << "Before Floor: " << endl;
+  cout << B->evaluate() << endl;
+  cout << "After Floor: " << endl;
+  Floor* B1 = new Floor(B);
+  cout << B1->evaluate() << endl;
+
+  cout << "Before Absolute Value: " << endl;
+  cout << C->evaluate() << endl;
+  cout << "After Absolute Value: " << endl;
+  Abs* C1 = new Abs(C);
+  cout << C1->evaluate() << endl;
+
+
+
+  Op* op5 = new Op(-5);
+	Op* op6 = new Op(2);
+	Pow* pow1 = new Pow(op5, op6);
+
+	Op* op7 = new Op(4);
+	Op* op8 = new Op(9);
+	Mult* mult1 = new Mult(op7, op8);
+
+	Add* add1 = new Add(pow1, mult1);
+
+	Op* op9 = new Op(17);
+
+	Sub* D = new Sub(add1, op9);
+
+  cout << "Before Parenthesies: " << endl;
+  cout << D->stringify() << endl;
+
+
+  Op* opb5 = new Op(-5);
+	Op* opb6 = new Op(2);
+	Pow* powb1 = new Pow(opb5, opb6);
+
+	Op* opb7 = new Op(4);
+	Op* opb8 = new Op(9);
+	Mult* multb1 = new Mult(opb7, opb8);
+  Paren* D1 = new Paren(multb1);
+	Add* addb1 = new Add(powb1, D1);
+
+	Op* opb9 = new Op(17);
+
+	Sub* BD = new Sub(addb1, opb9);
+
+  cout << "After Parenthesies: " << endl;
+  cout << BD->stringify() << endl;
+
+
+
+  Op* op10 = new Op(78);
+  Op* op11 = new Op(5);
+  Op* op12 = new Op(100);
+  Mult* mult3 = new Mult(op10, op11);
+  Add* E = new Add(op12, mult3);
+
+  cout << "Before truncation: " << endl;
+  cout << E->stringify() << endl;
+
+  Op* op101 = new Op(78);
+  Op* op111 = new Op(5);
+  Op* op121 = new Op(100);
+  Mult* mult31 = new Mult(op101, op111);
+  Trunc* E1 = new Trunc(mult31);
+  Add* BE = new Add(op121, E1);
+
+  cout << "After truncation: " << endl;
+  cout << BE->stringify() << endl;
 
 
 
