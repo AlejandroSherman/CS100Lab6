@@ -18,7 +18,7 @@ using namespace std;
 #include "Abs.hpp"
 #include "Pow.hpp"
 
-TEST(MixedTestSet, ComplexTest1) {
+TEST(MixedTestSet, Complex_Abs_Celi_FLoor_Test) {
 
 	Op* op2 = new Op(2);
 	Op* op3pt2 = new Op(3.2);
@@ -37,13 +37,22 @@ TEST(MixedTestSet, ComplexTest1) {
 	Mult* mult1 = new Mult(sub1, oppt5);
 	Mult* mult2 = new Mult(mult1, floor1);
 	Ceil* test = new Ceil(mult2);
-	
+
 
 	EXPECT_EQ(test->evaluate(), -45);
 }
 
+TEST(MixedTestSet, Layered_Abs_Celi_FLoor_Test) {
 
-TEST(MixedTestSet, ComplexTest2) {
+	Op* op1 = new Op(-1.5);
+	Floor* floor1 = new Floor(op1);
+	Ceil* ceil1 = new Ceil(floor1);
+	Abs* test = new Abs(ceil1);
+
+	EXPECT_EQ(test->evaluate(), 2);
+}
+
+TEST(MixedTestSet, Complex_Paren_Trunc_Test) {
 
 	Op* op1 = new Op(1);
 	Op* op2 = new Op(2);
@@ -61,6 +70,32 @@ TEST(MixedTestSet, ComplexTest2) {
 
 	Sub* test = new Sub(mult1, t1);
 	string result = "(2 - 1) * (6 + 3) - 1"; // truncate(2-1) = 1
+
+	EXPECT_EQ(test->stringify(), result);
+}
+
+TEST(MixedTestSet, Layered_Paren_Trunc_Test) {
+
+	Op* op1 = new Op(1);
+	Op* op2 = new Op(2);
+
+	Sub* sub1 = new Sub(op2, op1);
+	Trunc* t1 = new Trunc(sub1);
+	Paren* test = new Paren(t1);
+	string result = "(1)";
+
+	EXPECT_EQ(test->stringify(), result);
+}
+
+TEST(MixedTestSet, Combine_All_Test) {
+
+	Op* op1 = new Op(-1.5);
+	Floor* floor1 = new Floor(op1);
+	Ceil* ceil1 = new Ceil(floor1);
+	Abs* abs = new Abs(ceil1);
+	Trunc* t1 = new Trunc(abs);
+	Paren* test = new Paren(t1);
+  string result = "(2)";
 
 	EXPECT_EQ(test->stringify(), result);
 }
