@@ -13,9 +13,10 @@ using namespace std;
 #include "sort.hpp"
 #include "Ceiling.hpp"
 #include "Pow.hpp"
+#include "Div.hpp"
 
 
-TEST(CeilingTest, BasicTest1) {
+TEST(CeilingTest, PosDecimalTest) {
 
 	Op* op1 = new Op(2.5);
 
@@ -24,7 +25,7 @@ TEST(CeilingTest, BasicTest1) {
 	EXPECT_EQ(test->evaluate(), 3);
 }
 
-TEST(CeilingTest, BasicTest2) {
+TEST(CeilingTest, IntegerTest) {
 
 	Op* op1 = new Op(3);
 
@@ -33,7 +34,7 @@ TEST(CeilingTest, BasicTest2) {
 	EXPECT_EQ(test->evaluate(), 3);
 }
 
-TEST(CeilingTest, BasicTest3) {
+TEST(CeilingTest, NegDecimalTest) {
 
 	Op* op1 = new Op(-5.4);
 
@@ -42,7 +43,7 @@ TEST(CeilingTest, BasicTest3) {
 	EXPECT_EQ(test->evaluate(), -5);
 }
 
-TEST(CeilingTest, BasicTest4) {
+TEST(CeilingTest, ZeroTest) {
 
 	Op* op1 = new Op(0);
 

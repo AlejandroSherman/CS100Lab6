@@ -13,9 +13,10 @@ using namespace std;
 #include "sort.hpp"
 #include "Abs.hpp"
 #include "Pow.hpp"
+#include "Div.hpp"
 
 
-TEST(AbsTest, BasicTest1) {
+TEST(AbsTest, NegTest) {
 
 	Op* op1 = new Op(-2.5);
 
@@ -24,7 +25,7 @@ TEST(AbsTest, BasicTest1) {
 	EXPECT_EQ(test->evaluate(), 2.5);
 }
 
-TEST(AbsTest, BasicTest2) {
+TEST(AbsTest, NegMultTest) {
 
 	Op* op1 = new Op(3);
   Op* op2 = new Op(-9);
@@ -34,7 +35,7 @@ TEST(AbsTest, BasicTest2) {
 	EXPECT_EQ(test->evaluate(), 27);
 }
 
-TEST(AbsTest, BasicTest3) {
+TEST(AbsTest, NegSubTest) {
 
 	Op* op1 = new Op(3);
 	Op* op2 = new Op(9);
@@ -45,7 +46,7 @@ TEST(AbsTest, BasicTest3) {
 	EXPECT_EQ(test->evaluate(), 6);
 }
 
-TEST(AbsTest, BasicTest4) {
+TEST(AbsTest, PosAddTest) {
 
 	Op* op1 = new Op(3);
 	Op* op2 = new Op(9);
