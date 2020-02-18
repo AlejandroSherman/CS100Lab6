@@ -5,7 +5,7 @@
 
 class Base;
 
-class Decorator {
+class Decorator : public Base {
     protected:
       Base* value;
     public:
