@@ -12,6 +12,7 @@ using namespace std;
 #include "BubbleSort.hpp"
 #include "sort.hpp"
 #include "Ceiling.hpp"
+#include "Pow.hpp"
 
 TEST(CeilingTest, BasicTest1) {
 
