@@ -10,9 +10,10 @@ class Decorator {
       Base* value;
     public:
     //Decorator(Base* incoming) {value = incoming ;}
-    Decorator() { };
-    virtual double evaluate();
-    //virtual std::string stringify();
+    Decorator(){};
+    virtual double evaluate() = 0;
+    //~Decorator() {};
+    virtual std::string stringify() = 0;
 
 };
     #endif

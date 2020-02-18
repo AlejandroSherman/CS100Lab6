@@ -12,6 +12,6 @@ class Ceil : public Decorator {
     public:
     Ceil (Base* input) : Decorator() {value = input;}
     double evaluate(){return ceil(value->evaluate());}
-
+    std::string stringify(){};
 };
     #endif
